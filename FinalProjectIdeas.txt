@@ -1,0 +1,7 @@
+Game Ideas
+-Upgradable bumpers that make the player take less damage (should have a cap on upgrade)
+-different drivetrain types
+	-swerve (turns by following the users mouse)
+	-tank (turns like a car no mouse needed)
+-spots on the robot that allow for attatching parts (Idea from spore)
+-multiple levels (of games from previous years)
