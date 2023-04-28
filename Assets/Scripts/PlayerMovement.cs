@@ -1,14 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] Rigidbody2D rb;
     [SerializeField] float tankSteer = 250f;
     [SerializeField] float tankSpeed = 10f;
-    [SerializeField] float swerveSteer = 10f;
     [SerializeField] float swerveSpeed = 10f;
     [SerializeField] bool driveMode;
+
+    void Start() {
+        
+    }
+
     void Update()
     {
         if (driveMode)
@@ -31,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
 
     void SwerveDrive()
     {
-        float horizontal = Input.GetAxis("Horizontal") * swerveSteer * Time.deltaTime;
+        float horizontal = Input.GetAxis("Horizontal") * swerveSpeed * Time.deltaTime;
         float vertical = Input.GetAxis("Vertical") * swerveSpeed * Time.deltaTime;
         transform.Translate(horizontal, vertical, 0);
     }
