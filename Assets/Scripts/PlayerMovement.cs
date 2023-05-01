@@ -36,8 +36,17 @@ public class PlayerMovement : MonoBehaviour
 
     void SwerveDrive()
     {
+        LookAtMouse();
         float horizontal = Input.GetAxis("Horizontal") * swerveSpeed * Time.deltaTime;
         float vertical = Input.GetAxis("Vertical") * swerveSpeed * Time.deltaTime;
         transform.Translate(horizontal, vertical, 0);
+    }
+
+    void LookAtMouse()
+    {
+        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        if (Input.mousePosition.x < 10 || Input.mousePosition.x > 10 
+            && Input.mousePosition.y < 10 || Input.mousePosition.y > 10)
+        transform.up = mousePosition - new Vector2(transform.position.x, transform.position.y);
     }
 }
