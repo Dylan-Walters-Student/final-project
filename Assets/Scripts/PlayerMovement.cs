@@ -37,35 +37,16 @@ public class PlayerMovement : MonoBehaviour
 
     void SwerveDrive()
     {
-        test2();
+        LookAtMouse();
         float horizontal = Input.GetAxis("Horizontal") * swerveSpeed * Time.deltaTime;
         float vertical = Input.GetAxis("Vertical") * swerveSpeed * Time.deltaTime;
         transform.Translate(horizontal, vertical, 0);
     }
 
     void LookAtMouse()
-    { 
+    {         
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         transform.up = mousePosition - new Vector2(transform.position.x, transform.position.y);
-    }
-
-    void test()
-    {
-        Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.z, 0);
-        Vector3 lookPos = Camera.main.ScreenToWorldPoint(mousePos);
-        lookPos = lookPos - transform.position;
-        float angle = Mathf.Atan2(lookPos.y, lookPos.x) * Mathf.Rad2Deg;
-        Quaternion newRotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        transform.rotation = Quaternion.Lerp(transform.rotation, newRotation, Time.deltaTime * swerveSteer); // works good
-    }
-
-    void test2()
-    {
-        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-        Vector2 lookDir = mousePosition - rb.position;
-        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90;
-        rb.rotation = angle;
     }
 
     //look up coroutine and using them to turn the robot based on frame and cusor position
