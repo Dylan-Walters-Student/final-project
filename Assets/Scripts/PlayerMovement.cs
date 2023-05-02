@@ -8,12 +8,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float tankSteer = 250f;
     [SerializeField] float tankSpeed = 10f;
     [SerializeField] float swerveSpeed = 10f;
-    [SerializeField] float swerveSteer = 1f;
     [SerializeField] bool driveMode;
-
-    void Start() {
-        
-    }
 
     void Update()
     {
