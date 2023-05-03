@@ -24,10 +24,8 @@ public class Collection : MonoBehaviour
         {
             if (!gpCollected)
             {
-                gpCollected = true;
-                Destroy(other.gameObject, 5f);
-                Wait(5f);
-                spriteRendererCone.color = hasCone;
+                Destroy(other.gameObject);
+                Appear("Cone");
             }
         }
 
@@ -35,16 +33,24 @@ public class Collection : MonoBehaviour
         {
             if (!gpCollected)
             {
-                gpCollected = true;
-                Destroy(other.gameObject, 5f);
-                Wait(5f);
-                spriteRendererCube.color = hasCube;
+                Destroy(other.gameObject);
+                Appear("Cube");
             }
         }
     }
 
-    private IEnumerator Wait(float time)
+    private void Appear(string piece)
     {
-        yield return new WaitForSeconds(time);
+        // yield return new WaitForSeconds(5f);
+        gpCollected = true;
+        if (piece.Equals("Cone")){
+             spriteRendererCone.color = hasCone;
+        } 
+
+        if (piece.Equals("Cube"))
+        {
+            spriteRendererCube.color = hasCube;
+        }
+           
     }
 }
