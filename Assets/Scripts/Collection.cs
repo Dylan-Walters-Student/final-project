@@ -51,6 +51,5 @@ public class Collection : MonoBehaviour
         {
             spriteRendererCube.color = hasCube;
         }
-           
     }
 }
