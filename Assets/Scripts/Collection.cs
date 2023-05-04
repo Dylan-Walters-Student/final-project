@@ -41,7 +41,6 @@ public class Collection : MonoBehaviour
 
     public void SetGamePieceShow(string piece)
     {
-        Debug.Log(piece);
         if (piece.Equals("Cone"))
         {
             spriteRendererCone.color = hasCone;
