@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Collection : MonoBehaviour
 {
-    bool gpCollected = false;
+    bool gpCollected;
     // float collectionSpeed = 5f;
     [SerializeField] Color32 hasCone = new Color32(1, 1, 1, 1);
     [SerializeField] Color32 hasCube = new Color32(1, 1, 1, 1);
@@ -25,7 +25,7 @@ public class Collection : MonoBehaviour
             if (!gpCollected)
             {
                 Destroy(other.gameObject);
-                Appear("Cone");
+                SetGamePieceShow("Cone");
             }
         }
 
@@ -34,22 +34,31 @@ public class Collection : MonoBehaviour
             if (!gpCollected)
             {
                 Destroy(other.gameObject);
-                Appear("Cube");
+                SetGamePieceShow("Cube");
             }
         }
     }
 
-    private void Appear(string piece)
+    public void SetGamePieceShow(string piece)
     {
-        // yield return new WaitForSeconds(5f);
-        gpCollected = true;
-        if (piece.Equals("Cone")){
-             spriteRendererCone.color = hasCone;
-        } 
+        Debug.Log(piece);
+        if (piece.Equals("Cone"))
+        {
+            spriteRendererCone.color = hasCone;
+            gpCollected = true;
+        }
 
         if (piece.Equals("Cube"))
         {
             spriteRendererCube.color = hasCube;
+            gpCollected = true;
+        }
+
+        if (piece.Equals("None"))
+        {
+            spriteRendererCube.color = noGamePiece;
+            spriteRendererCone.color = noGamePiece;
+            gpCollected = false;
         }
     }
 }
