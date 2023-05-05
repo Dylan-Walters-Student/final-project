@@ -13,7 +13,7 @@ public class Collection : MonoBehaviour
     SpriteRenderer spriteRendererCone;
     SpriteRenderer spriteRendererCube;
     Scoring scoring;
-    bool gpCollected;
+    bool hasPiece;
     bool coneCollected;
     bool cubeCollected;
     private void Start()
@@ -38,34 +38,18 @@ public class Collection : MonoBehaviour
                 // {
                 //     //player collect
                 // }
-                Debug.Log("red chute");
             }
             if (other.tag.Equals("RedPlatform"))
             {
-                // if (/*player station is active*/)
-                // {
-                //     //player collect
-                // }
-                Debug.Log("red platform");
             }
         }
         else
         {
             if (other.tag.Equals("BlueChute"))
             {
-                // if (/*player station is active*/)
-                // {
-                //     //player collect
-                // }
-                Debug.Log("blue chute");
             }
             if (other.tag.Equals("BluePlatform"))
             {
-                // if (/*player station is active*/)
-                // {
-                //     //player collect
-                // }
-                Debug.Log("blue platform");
             }
         }
     }
@@ -74,7 +58,7 @@ public class Collection : MonoBehaviour
     {
         if (other.tag.Equals("Cone"))
         {
-            if (!gpCollected)
+            if (!hasPiece)
             {
                 Destroy(other.gameObject);
                 SetGamePieceShow(1);
@@ -84,7 +68,7 @@ public class Collection : MonoBehaviour
 
         if (other.tag.Equals("Cube"))
         {
-            if (!gpCollected)
+            if (!hasPiece)
             {
                 Destroy(other.gameObject);
                 SetGamePieceShow(2);
@@ -95,10 +79,10 @@ public class Collection : MonoBehaviour
 
     private void CollectedFalse()
     {
-        scoring.PieceStatus(3);
         cubeCollected = false;
         coneCollected = false;
-        gpCollected = false;
+        hasPiece = false;
+        scoring.GetPieceStatus(hasPiece);
     }
 
     public void SetGamePieceShow(int status)
@@ -106,12 +90,12 @@ public class Collection : MonoBehaviour
         if (status == 1)
         {
             spriteRendererCone.color = hasCone;
-            gpCollected = true;
+            hasPiece = true;
         }
         else if (status == 2)
         {
             spriteRendererCube.color = hasCube;
-            gpCollected = true;
+            hasPiece = true;
         }
         else
         {
@@ -119,21 +103,6 @@ public class Collection : MonoBehaviour
             spriteRendererCone.color = noGamePiece;
             CollectedFalse();
         }
-    }
-
-    public int GetCollected()
-    {
-        if (coneCollected)
-        {
-            return 1;
-        }
-        else if (cubeCollected)
-        {
-            return 2;
-        }
-        else
-        {
-            return 3;
-        }
+        scoring.GetPieceStatus(hasPiece);
     }
 }

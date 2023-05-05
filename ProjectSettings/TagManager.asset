@@ -13,6 +13,10 @@ TagManager:
   - MidZoneBlue
   - MidZoneRed
   - HighZoneBlue
+  - BlueChute
+  - RedPlatform
+  - BluePlatform
+  - RedChute
   layers:
   - Default
   - TransparentFX
