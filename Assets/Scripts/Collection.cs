@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Collection : MonoBehaviour
 {
-    bool gpCollected;
     // float collectionSpeed = 5f;
     [SerializeField] Color32 hasCone = new Color32(1, 1, 1, 1);
     [SerializeField] Color32 hasCube = new Color32(1, 1, 1, 1);
@@ -13,8 +12,13 @@ public class Collection : MonoBehaviour
     [SerializeField] GameObject cubeCollect;
     SpriteRenderer spriteRendererCone;
     SpriteRenderer spriteRendererCube;
+    Scoring scoring;
+    bool gpCollected;
+    bool coneCollected;
+    bool cubeCollected;
     private void Start()
     {
+        scoring = FindObjectOfType<Scoring>();
         spriteRendererCone = coneCollect.GetComponent<SpriteRenderer>();
         spriteRendererCube = cubeCollect.GetComponent<SpriteRenderer>();
     }
@@ -26,6 +30,7 @@ public class Collection : MonoBehaviour
             {
                 Destroy(other.gameObject);
                 SetGamePieceShow("Cone");
+                coneCollected = true;
             }
         }
 
@@ -35,6 +40,7 @@ public class Collection : MonoBehaviour
             {
                 Destroy(other.gameObject);
                 SetGamePieceShow("Cube");
+                cubeCollected = true;
             }
         }
     }
@@ -57,7 +63,31 @@ public class Collection : MonoBehaviour
         {
             spriteRendererCube.color = noGamePiece;
             spriteRendererCone.color = noGamePiece;
-            gpCollected = false;
+            CollectedFalse();
         }
+    }
+
+    public int GetCollected()
+    {
+        if (coneCollected)
+        {
+            return 1;
+        }
+        else if (cubeCollected)
+        {
+            return 2;
+        }
+        else
+        {
+            return 3;
+        }
+    }
+
+    private void CollectedFalse()
+    {
+        scoring.PieceStatus(3);
+        cubeCollected = false;
+        coneCollected = false;
+        gpCollected = false;
     }
 }

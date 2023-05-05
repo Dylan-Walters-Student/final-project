@@ -24,6 +24,7 @@ public class Scoring : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
+        PieceStatus(collection.GetCollected());
         if (alliance)
         {
             if (other.tag == "HighZoneBlue" || other.tag == "MidZoneBlue" || other.tag == "LowZoneBlue")
@@ -38,7 +39,6 @@ public class Scoring : MonoBehaviour
                 ScoreGrid(other);
             }
         }
-
     }
 
     private void AlliancePick()
@@ -63,40 +63,40 @@ public class Scoring : MonoBehaviour
 
     private void AddScore(string zone)
     {
-        if (zone == "High")
+        if (zone.Equals("High"))
         {
-            Debug.Log("High Zone");
             if (hasCone)
             {
-                allianceScore += cone + high;
+                allianceScore += cone + high; 
             }
-            else
+            
+            if (hasCube)
             {
                 allianceScore += cube + high;
             }
         }
 
-        if (zone == "Mid")
+        if (zone.Equals("Mid"))
         {
-            Debug.Log("Mid Zone");
             if (hasCone)
             {
                 allianceScore += cone + mid;
             }
-            else
+
+            if (hasCube)
             {
                 allianceScore += cube + mid;
             }
         }
 
-        if (zone == "Low")
+        if (zone.Equals("Low"))
         {
-            Debug.Log("low Zone");
             if (hasCone)
             {
                 allianceScore += cone;
             }
-            else
+
+            if (hasCube)
             {
                 allianceScore += cube;
             }
@@ -107,34 +107,54 @@ public class Scoring : MonoBehaviour
 
     private void ScoreGrid(Collider2D other)
     {
-        if (other.tag.Equals("HighZoneRed")) // && hasCone || hasCube && !alliance
+        if (other.tag.Equals("HighZoneRed") && hasCone || hasCube)
         {
             AddScore("High");
         }
 
-        if (other.tag.Equals("MidZoneRed"))
+        if (other.tag.Equals("MidZoneRed") && hasCone || hasCube)
         {
             AddScore("Mid");
+
         }
 
-        if (other.tag.Equals("LowZoneRed"))
+        if (other.tag.Equals("LowZoneRed") && hasCone || hasCube)
         {
             AddScore("Low");
+
         }
 
-        if (other.tag.Equals("HighZoneBlue"))
+        if (other.tag.Equals("HighZoneBlue") && hasCone || hasCube)
         {
             AddScore("High");
         }
 
-        if (other.tag.Equals("MidZoneBlue"))
+        if (other.tag.Equals("MidZoneBlue") && hasCone || hasCube)
         {
             AddScore("Mid");
         }
 
-        if (other.tag.Equals("LowZoneBlue"))
+        if (other.tag.Equals("LowZoneBlue") && hasCone || hasCube)
         {
             AddScore("Low");
+
+        }
+    }
+
+    public void PieceStatus(int status)
+    {
+        if(status == 1)
+        {
+            hasCone = true;
+        }
+        else if(status == 2)
+        {
+            hasCube = true;
+        }
+        else
+        {
+            hasCone = false;
+            hasCube = false;
         }
     }
 
