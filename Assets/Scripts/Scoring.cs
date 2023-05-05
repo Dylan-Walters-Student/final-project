@@ -61,9 +61,9 @@ public class Scoring : MonoBehaviour
 
     }
 
-    private void AddScore(string zone)
+    private void AddScore(int zone)
     {
-        if (zone.Equals("High"))
+        if (zone == 1)
         {
             if (hasCone)
             {
@@ -76,7 +76,7 @@ public class Scoring : MonoBehaviour
             }
         }
 
-        if (zone.Equals("Mid"))
+        if (zone == 2)
         {
             if (hasCone)
             {
@@ -89,7 +89,7 @@ public class Scoring : MonoBehaviour
             }
         }
 
-        if (zone.Equals("Low"))
+        if (zone == 3)
         {
             if (hasCone)
             {
@@ -109,34 +109,34 @@ public class Scoring : MonoBehaviour
     {
         if (other.tag.Equals("HighZoneRed") && hasCone || hasCube)
         {
-            AddScore("High");
+            AddScore(1);
         }
 
         if (other.tag.Equals("MidZoneRed") && hasCone || hasCube)
         {
-            AddScore("Mid");
+            AddScore(2);
 
         }
 
         if (other.tag.Equals("LowZoneRed") && hasCone || hasCube)
         {
-            AddScore("Low");
+            AddScore(3);
 
         }
 
         if (other.tag.Equals("HighZoneBlue") && hasCone || hasCube)
         {
-            AddScore("High");
+            AddScore(1);
         }
 
         if (other.tag.Equals("MidZoneBlue") && hasCone || hasCube)
         {
-            AddScore("Mid");
+            AddScore(2);
         }
 
         if (other.tag.Equals("LowZoneBlue") && hasCone || hasCube)
         {
-            AddScore("Low");
+            AddScore(3);
 
         }
     }
