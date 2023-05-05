@@ -32,7 +32,7 @@ public class Scoring : MonoBehaviour
                 ScoreGrid(other);
             }
         }
-        else 
+        else
         {
             if (other.tag == "HighZoneRed" || other.tag == "MidZoneRed" || other.tag == "LowZoneRed")
             {
@@ -67,9 +67,9 @@ public class Scoring : MonoBehaviour
         {
             if (hasCone)
             {
-                allianceScore += cone + high; 
+                allianceScore += cone + high;
             }
-            
+
             if (hasCube)
             {
                 allianceScore += cube + high;
@@ -143,11 +143,11 @@ public class Scoring : MonoBehaviour
 
     public void PieceStatus(int status)
     {
-        if(status == 1)
+        if (status == 1)
         {
             hasCone = true;
         }
-        else if(status == 2)
+        else if (status == 2)
         {
             hasCube = true;
         }
@@ -158,4 +158,8 @@ public class Scoring : MonoBehaviour
         }
     }
 
+    public bool GetAlliance()
+    {
+        return alliance;
+    }
 }

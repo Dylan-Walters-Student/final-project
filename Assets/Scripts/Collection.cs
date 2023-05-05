@@ -24,7 +24,43 @@ public class Collection : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Cone")
+        FieldCollection(other);
+        HumanPlayerCollection(other);
+    }
+
+    private void HumanPlayerCollection(Collider2D other)
+    {
+        if (scoring.GetAlliance())
+        {
+            if (other.tag.Equals("RedChute"))
+            {
+                // if (/*player station is active*/)
+                // {
+                //     //player collect
+                // }
+                Debug.Log("red chute");
+            }
+            if (other.tag.Equals("RedPlatform"))
+            {
+                Debug.Log("red platform");
+            }
+        }
+        else
+        {
+            if (other.tag.Equals("BlueChute"))
+            {
+                Debug.Log("blue chute");
+            }
+            if (other.tag.Equals("BluePlatform"))
+            {
+                Debug.Log("blue platform");
+            }
+        }
+    }
+
+    private void FieldCollection(Collider2D other)
+    {
+        if (other.tag.Equals("Cone"))
         {
             if (!gpCollected)
             {
@@ -34,7 +70,7 @@ public class Collection : MonoBehaviour
             }
         }
 
-        if (other.tag == "Cube")
+        if (other.tag.Equals("Cube"))
         {
             if (!gpCollected)
             {
@@ -43,6 +79,14 @@ public class Collection : MonoBehaviour
                 cubeCollected = true;
             }
         }
+    }
+
+    private void CollectedFalse()
+    {
+        scoring.PieceStatus(3);
+        cubeCollected = false;
+        coneCollected = false;
+        gpCollected = false;
     }
 
     public void SetGamePieceShow(string piece)
@@ -81,13 +125,5 @@ public class Collection : MonoBehaviour
         {
             return 3;
         }
-    }
-
-    private void CollectedFalse()
-    {
-        scoring.PieceStatus(3);
-        cubeCollected = false;
-        coneCollected = false;
-        gpCollected = false;
     }
 }
