@@ -101,7 +101,7 @@ public class Scoring : MonoBehaviour
                 allianceScore += cube;
             }
         }
-        collection.SetGamePieceShow("None");
+        collection.SetGamePieceShow(3);
         Debug.Log(allianceScore);
     }
 

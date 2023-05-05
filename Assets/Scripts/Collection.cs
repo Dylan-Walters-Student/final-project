@@ -42,6 +42,10 @@ public class Collection : MonoBehaviour
             }
             if (other.tag.Equals("RedPlatform"))
             {
+                // if (/*player station is active*/)
+                // {
+                //     //player collect
+                // }
                 Debug.Log("red platform");
             }
         }
@@ -49,10 +53,18 @@ public class Collection : MonoBehaviour
         {
             if (other.tag.Equals("BlueChute"))
             {
+                // if (/*player station is active*/)
+                // {
+                //     //player collect
+                // }
                 Debug.Log("blue chute");
             }
             if (other.tag.Equals("BluePlatform"))
             {
+                // if (/*player station is active*/)
+                // {
+                //     //player collect
+                // }
                 Debug.Log("blue platform");
             }
         }
@@ -65,7 +77,7 @@ public class Collection : MonoBehaviour
             if (!gpCollected)
             {
                 Destroy(other.gameObject);
-                SetGamePieceShow("Cone");
+                SetGamePieceShow(1);
                 coneCollected = true;
             }
         }
@@ -75,7 +87,7 @@ public class Collection : MonoBehaviour
             if (!gpCollected)
             {
                 Destroy(other.gameObject);
-                SetGamePieceShow("Cube");
+                SetGamePieceShow(2);
                 cubeCollected = true;
             }
         }
@@ -89,21 +101,19 @@ public class Collection : MonoBehaviour
         gpCollected = false;
     }
 
-    public void SetGamePieceShow(string piece)
+    public void SetGamePieceShow(int status)
     {
-        if (piece.Equals("Cone"))
+        if (status == 1)
         {
             spriteRendererCone.color = hasCone;
             gpCollected = true;
         }
-
-        if (piece.Equals("Cube"))
+        else if (status == 2)
         {
             spriteRendererCube.color = hasCube;
             gpCollected = true;
         }
-
-        if (piece.Equals("None"))
+        else
         {
             spriteRendererCube.color = noGamePiece;
             spriteRendererCone.color = noGamePiece;
