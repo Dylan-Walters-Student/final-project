@@ -16,6 +16,8 @@ public class Collection : MonoBehaviour
     bool hasPiece;
     bool coneCollected;
     bool cubeCollected;
+    bool chuteActive = true;
+    bool platformActive = true;
     private void Start()
     {
         scoring = FindObjectOfType<Scoring>();
@@ -32,24 +34,53 @@ public class Collection : MonoBehaviour
     {
         if (scoring.GetAlliance())
         {
-            if (other.tag.Equals("RedChute"))
+            if (other.tag.Equals("BlueChute"))
             {
-                // if (/*player station is active*/)
-                // {
-                //     //player collect
-                // }
+                if (chuteActive/*player station is active*/)
+                {
+                    //player collect
+                    SetGamePieceShow(1);
+                }
             }
-            if (other.tag.Equals("RedPlatform"))
+            if (other.tag.Equals("BluePlatform"))
             {
+                if (platformActive)
+                {
+                    SetGamePieceShow(1);
+                }
             }
         }
         else
         {
+            if (other.tag.Equals("RedChute"))
+            {
+                if (chuteActive/*player station is active*/)
+                {
+                    //player collect
+                    SetGamePieceShow(1);
+                }
+            }
+            if (other.tag.Equals("RedPlatform"))
+            {
+                if (platformActive)
+                {
+                    SetGamePieceShow(1);
+                }
+            }
             if (other.tag.Equals("BlueChute"))
             {
+                if (chuteActive/*player station is active*/)
+                {
+                    //player collect
+                    SetGamePieceShow(1);
+                }
             }
             if (other.tag.Equals("BluePlatform"))
             {
+                if (platformActive)
+                {
+                    SetGamePieceShow(1);
+                }
             }
         }
     }
@@ -82,7 +113,7 @@ public class Collection : MonoBehaviour
         cubeCollected = false;
         coneCollected = false;
         hasPiece = false;
-        scoring.GetPieceStatus(hasPiece);
+        scoring.SetPieceStatus(hasPiece);
     }
 
     public void SetGamePieceShow(int status)
@@ -103,6 +134,6 @@ public class Collection : MonoBehaviour
             spriteRendererCone.color = noGamePiece;
             CollectedFalse();
         }
-        scoring.GetPieceStatus(hasPiece);
+        scoring.SetPieceStatus(hasPiece);
     }
 }

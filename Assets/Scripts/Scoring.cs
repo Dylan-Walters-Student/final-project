@@ -97,7 +97,7 @@ public class Scoring : MonoBehaviour
         }
     }
 
-    public void GetPieceStatus(bool gamePieceStatus)
+    public void SetPieceStatus(bool gamePieceStatus)
     {
         if (gamePieceStatus)
         {
