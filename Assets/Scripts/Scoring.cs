@@ -97,6 +97,13 @@ public class Scoring : MonoBehaviour
         }
     }
 
+    private int ScoretoPoints()
+    {
+        int points;
+        points = Math.Round(allianceScore * 0.12);
+        return points;
+    }
+
     public void SetPieceStatus(bool gamePieceStatus)
     {
         if (gamePieceStatus)
