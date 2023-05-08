@@ -39,14 +39,14 @@ public class Collection : MonoBehaviour
                 if (chuteActive/*player station is active*/)
                 {
                     //player collect
-                    SetGamePieceShow(1);
+                    AddGamePiece(1);
                 }
             }
             if (other.tag.Equals("BluePlatform"))
             {
                 if (platformActive)
                 {
-                    SetGamePieceShow(1);
+                    AddGamePiece(1);
                 }
             }
         }
@@ -54,17 +54,16 @@ public class Collection : MonoBehaviour
         {
             if (other.tag.Equals("RedChute"))
             {
-                if (chuteActive/*player station is active*/)
+                if (chuteActive)
                 {
-                    //player collect
-                    SetGamePieceShow(1);
+                    AddGamePiece(1);
                 }
             }
             if (other.tag.Equals("RedPlatform"))
             {
                 if (platformActive)
                 {
-                    SetGamePieceShow(1);
+                    AddGamePiece(1);
                 }
             }
             if (other.tag.Equals("BlueChute"))
@@ -72,14 +71,14 @@ public class Collection : MonoBehaviour
                 if (chuteActive/*player station is active*/)
                 {
                     //player collect
-                    SetGamePieceShow(1);
+                    AddGamePiece(1);
                 }
             }
             if (other.tag.Equals("BluePlatform"))
             {
                 if (platformActive)
                 {
-                    SetGamePieceShow(1);
+                    AddGamePiece(1);
                 }
             }
         }
@@ -92,7 +91,7 @@ public class Collection : MonoBehaviour
             if (!hasPiece)
             {
                 Destroy(other.gameObject);
-                SetGamePieceShow(1);
+                AddGamePiece(1);
                 coneCollected = true;
             }
         }
@@ -102,38 +101,40 @@ public class Collection : MonoBehaviour
             if (!hasPiece)
             {
                 Destroy(other.gameObject);
-                SetGamePieceShow(2);
+                AddGamePiece(2);
                 cubeCollected = true;
             }
         }
     }
 
-    private void CollectedFalse()
-    {
-        cubeCollected = false;
-        coneCollected = false;
-        hasPiece = false;
-        scoring.SetPieceStatus(hasPiece);
-    }
-
-    public void SetGamePieceShow(int status)
+    public void AddGamePiece(int status)
     {
         if (status == 1)
         {
             spriteRendererCone.color = hasCone;
+            coneCollected = true;
             hasPiece = true;
         }
         else if (status == 2)
         {
             spriteRendererCube.color = hasCube;
+            cubeCollected = true;
             hasPiece = true;
         }
         else
         {
             spriteRendererCube.color = noGamePiece;
             spriteRendererCone.color = noGamePiece;
-            CollectedFalse();
+            RemoveGamePiece();
         }
         scoring.SetPieceStatus(hasPiece);
+    }
+
+    private void RemoveGamePiece()
+    {
+        cubeCollected = false;
+        coneCollected = false;
+        hasPiece = false;
+        scoring.SetPieceStatus(!hasPiece);
     }
 }

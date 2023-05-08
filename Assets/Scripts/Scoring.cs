@@ -74,7 +74,7 @@ public class Scoring : MonoBehaviour
         {
             allianceScore += scoreBase;
         }
-        collection.SetGamePieceShow(3);
+        collection.AddGamePiece(3);
         Debug.Log(allianceScore);
     }
 
