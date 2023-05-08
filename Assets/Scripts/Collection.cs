@@ -36,15 +36,14 @@ public class Collection : MonoBehaviour
         {
             if (other.tag.Equals("BlueChute"))
             {
-                if (chuteActive/*player station is active*/)
+                if (chuteActive && !hasPiece)
                 {
-                    //player collect
                     AddGamePiece(1);
                 }
             }
             if (other.tag.Equals("BluePlatform"))
             {
-                if (platformActive)
+                if (platformActive && !hasPiece)
                 {
                     AddGamePiece(1);
                 }
@@ -54,29 +53,14 @@ public class Collection : MonoBehaviour
         {
             if (other.tag.Equals("RedChute"))
             {
-                if (chuteActive)
+                if (chuteActive && !hasPiece)
                 {
                     AddGamePiece(1);
                 }
             }
             if (other.tag.Equals("RedPlatform"))
             {
-                if (platformActive)
-                {
-                    AddGamePiece(1);
-                }
-            }
-            if (other.tag.Equals("BlueChute"))
-            {
-                if (chuteActive/*player station is active*/)
-                {
-                    //player collect
-                    AddGamePiece(1);
-                }
-            }
-            if (other.tag.Equals("BluePlatform"))
-            {
-                if (platformActive)
+                if (platformActive && !hasPiece)
                 {
                     AddGamePiece(1);
                 }

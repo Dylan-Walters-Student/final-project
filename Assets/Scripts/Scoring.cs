@@ -80,17 +80,17 @@ public class Scoring : MonoBehaviour
 
     private void ScoreGrid(Collider2D other)
     {
-        if (other.tag == "HighZoneRed" || other.tag == "HighZoneBlue" && hasPiece)
+        if (other.tag == "HighZoneRed" && hasPiece || other.tag == "HighZoneBlue" && hasPiece)
         {
             AddScore(1);
         }
 
-        if (other.tag == "MidZoneRed" || other.tag == "MidZoneBlue" && hasPiece)
+        if (other.tag == "MidZoneRed" && hasPiece || other.tag == "MidZoneBlue" && hasPiece)
         {
             AddScore(2);
         }
 
-        if (other.tag == "LowZoneRed" || other.tag == "LowZoneBlue" && hasPiece)
+        if (other.tag == "LowZoneRed" && hasPiece || other.tag == "LowZoneBlue" && hasPiece)
         {
             AddScore(3);
 
@@ -100,7 +100,7 @@ public class Scoring : MonoBehaviour
     private int ScoretoPoints()
     {
         int points;
-        points = Math.Round(allianceScore * 0.12);
+        points = (int)(allianceScore * 0.15);
         return points;
     }
 
