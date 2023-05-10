@@ -43,6 +43,4 @@ public class PlayerMovement : MonoBehaviour
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         transform.up = mousePosition - new Vector2(transform.position.x, transform.position.y);
     }
-
-    //look up coroutine and using them to turn the robot based on frame and cusor position
 }
