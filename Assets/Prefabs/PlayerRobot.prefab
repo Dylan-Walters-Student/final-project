@@ -258,7 +258,7 @@ MonoBehaviour:
   tankSteer: 250
   tankSpeed: 10
   swerveSpeed: 10
-  driveMode: 1
+  driveMode: 0
 --- !u!114 &5682666883127882217
 MonoBehaviour:
   m_ObjectHideFlags: 0

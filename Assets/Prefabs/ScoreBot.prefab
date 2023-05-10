@@ -9,13 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5682666883127882220}
-  - component: {fileID: 5682666883127882003}
-  - component: {fileID: 5682666883127882217}
-  - component: {fileID: 5682666883127882218}
   - component: {fileID: 5682666883127882221}
   - component: {fileID: 5682666883127882223}
   - component: {fileID: 5682666883127882222}
-  - component: {fileID: 5682666883127882216}
+  - component: {fileID: 1881256413}
   m_Layer: 7
   m_Name: ScoreBot
   m_TagString: Untagged
@@ -39,60 +36,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5682666883127882003
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5682666883127882002}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac282c3a9c859b049a9e414502789285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 5682666883127882221}
-  tankSteer: 250
-  tankSpeed: 10
-  swerveSpeed: 10
-  driveMode: 0
---- !u!114 &5682666883127882217
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5682666883127882002}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3cd73087d7255824993c6aed15714e10, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hasCone:
-    serializedVersion: 2
-    rgba: 4284939519
-  hasCube:
-    serializedVersion: 2
-    rgba: 4292897730
-  noGamePiece:
-    serializedVersion: 2
-    rgba: 0
-  coneCollect: {fileID: 0}
-  cubeCollect: {fileID: 0}
---- !u!114 &5682666883127882218
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5682666883127882002}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63a64212986df80468a4b573f23e021f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bumperRed: {fileID: 5682666883850820624}
-  bumperBlue: {fileID: 0}
 --- !u!50 &5682666883127882221
 Rigidbody2D:
   serializedVersion: 4
@@ -151,7 +94,7 @@ SortingGroup:
   m_SortingLayerID: 1457333965
   m_SortingLayer: 2
   m_SortingOrder: 0
---- !u!114 &5682666883127882216
+--- !u!114 &1881256413
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -160,27 +103,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5682666883127882002}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Script: {fileID: 11500000, guid: b1b93bc1c3d33364f8ec7fc3d68772b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: a6263cdd64daa3c43b59eafc63e60ac5, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
+  pathConfig: {fileID: 11400000, guid: 69e51b89aa30f0d48a53d6d4155ae62d, type: 2}
 --- !u!1 &5682666883194169176
 GameObject:
   m_ObjectHideFlags: 0
