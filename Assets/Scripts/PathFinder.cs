@@ -22,10 +22,9 @@ public class PathFinder : MonoBehaviour
     {
         if(waypointIndex < waypoints.Count)
         {
-            Vector3 targetPosition = waypoints[waypointIndex].position;
+            Vector3 targetPosition = waypoints[waypointIndex].position; 
             float delta = pathConfig.GetMoveSpeed() * Time.deltaTime;
             transform.position = Vector2.MoveTowards(transform.position, targetPosition, delta);
-            transform.LookAt(targetPosition);
             if (transform.position == targetPosition)
             {
                 waypointIndex++;

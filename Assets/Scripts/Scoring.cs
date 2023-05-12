@@ -5,6 +5,8 @@ using TMPro;
 
 public class Scoring : MonoBehaviour
 {
+    [SerializeField] TextMeshProUGUI redScore;
+    [SerializeField] TextMeshProUGUI blueScore;
     [SerializeField] GameObject bumperRed;
     [SerializeField] GameObject bumperBlue;
     Collection collection;
@@ -17,26 +19,17 @@ public class Scoring : MonoBehaviour
 
     void Start()
     {
+        redScore = FindObjectOfType<TextMeshProUGUI>();
+        blueScore = FindObjectOfType<TextMeshProUGUI>();
         collection = FindObjectOfType<Collection>();
         AlliancePick();
         allianceScore = 0;
+        ShowScore();
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (alliance)
-        {
-            if (other.tag == "HighZoneBlue" || other.tag == "MidZoneBlue" || other.tag == "LowZoneBlue")
-            {
-                ScoreGrid(other);
-            }
-        }
-        else
-        {
-            if (other.tag == "HighZoneRed" || other.tag == "MidZoneRed" || other.tag == "LowZoneRed")
-            {
-                ScoreGrid(other);
-            }
-        }
+        Score(other);
+        ShowScore();
     }
 
     private void AlliancePick()
@@ -59,7 +52,44 @@ public class Scoring : MonoBehaviour
 
     }
 
-    private void AddScore(int zone)
+    private void Score(Collider2D other)
+    {
+        if (alliance)
+        {
+            if (other.tag == "HighZoneBlue" || other.tag == "MidZoneBlue" || other.tag == "LowZoneBlue")
+            {
+                ZoneCheck(other);
+            }
+        }
+        else
+        {
+            if (other.tag == "HighZoneRed" || other.tag == "MidZoneRed" || other.tag == "LowZoneRed")
+            {
+                ZoneCheck(other);
+            }
+        }
+    }
+
+    private void ZoneCheck(Collider2D other)
+    {
+        if (other.tag == "HighZoneRed" && hasPiece || other.tag == "HighZoneBlue" && hasPiece)
+        {
+            AddPoints(1);
+        }
+
+        if (other.tag == "MidZoneRed" && hasPiece || other.tag == "MidZoneBlue" && hasPiece)
+        {
+            AddPoints(2);
+        }
+
+        if (other.tag == "LowZoneRed" && hasPiece || other.tag == "LowZoneBlue" && hasPiece)
+        {
+            AddPoints(3);
+
+        }
+    }
+
+    private void AddPoints(int zone)
     {
         if (zone == 1)
         {
@@ -79,22 +109,15 @@ public class Scoring : MonoBehaviour
         Debug.Log(allianceScore);
     }
 
-    private void ScoreGrid(Collider2D other)
+    private void ShowScore()
     {
-        if (other.tag == "HighZoneRed" && hasPiece || other.tag == "HighZoneBlue" && hasPiece)
+        if (alliance)
         {
-            AddScore(1);
+            blueScore.text = $"{allianceScore}";
         }
-
-        if (other.tag == "MidZoneRed" && hasPiece || other.tag == "MidZoneBlue" && hasPiece)
+        else
         {
-            AddScore(2);
-        }
-
-        if (other.tag == "LowZoneRed" && hasPiece || other.tag == "LowZoneBlue" && hasPiece)
-        {
-            AddScore(3);
-
+            redScore.text = $"{allianceScore}";
         }
     }
 

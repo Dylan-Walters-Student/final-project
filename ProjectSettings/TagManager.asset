@@ -17,6 +17,7 @@ TagManager:
   - RedPlatform
   - BluePlatform
   - RedChute
+  - Freeze
   layers:
   - Default
   - TransparentFX

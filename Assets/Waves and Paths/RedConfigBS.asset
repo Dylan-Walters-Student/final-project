@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adaed85107457d74ab154431bc80d586, type: 3}
   m_Name: RedConfigBS
   m_EditorClassIdentifier: 
-  pathPrefab: {fileID: 0}
+  pathPrefab: {fileID: 6364530600119474383, guid: ae3dbc6d0ecbf1146a75cd9253a7a721, type: 3}
   moveSpeed: 5
