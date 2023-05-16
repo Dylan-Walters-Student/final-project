@@ -32,38 +32,18 @@ public class Collection : MonoBehaviour
 
     private void HumanPlayerCollection(Collider2D other)
     {
-        if (scoring.GetAlliance())
+        if (other.tag.Equals("BlueChute"))
         {
-            if (other.tag.Equals("BlueChute"))
+            if (chuteActive && !hasPiece)
             {
-                if (chuteActive && !hasPiece)
-                {
-                    AddGamePiece(1);
-                }
-            }
-            if (other.tag.Equals("BluePlatform"))
-            {
-                if (platformActive && !hasPiece)
-                {
-                    AddGamePiece(1);
-                }
+                AddGamePiece(1);
             }
         }
-        else
+        if (other.tag.Equals("BluePlatform"))
         {
-            if (other.tag.Equals("RedChute"))
+            if (platformActive && !hasPiece)
             {
-                if (chuteActive && !hasPiece)
-                {
-                    AddGamePiece(1);
-                }
-            }
-            if (other.tag.Equals("RedPlatform"))
-            {
-                if (platformActive && !hasPiece)
-                {
-                    AddGamePiece(1);
-                }
+                AddGamePiece(1);
             }
         }
     }
