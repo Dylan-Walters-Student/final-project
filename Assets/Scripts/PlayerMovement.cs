@@ -4,43 +4,24 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] Rigidbody2D rb;
-    [SerializeField] float tankSteer = 250f;
-    [SerializeField] float tankSpeed = 10f;
-    [SerializeField] float swerveSpeed = 10f;
-    [SerializeField] bool driveMode;
+    [SerializeField] float steerSpeed = 250f;
+    [SerializeField] float speed = 10f;
 
     void Update()
     {
-        if (driveMode)
-        {
-            SwerveDrive();
-        }
-        else
-        {
-            TankDrive();
-        }
-    }
-
-    void TankDrive()
-    {
-        float steerAmount = Input.GetAxis("Horizontal") * tankSteer * Time.deltaTime;
-        float moveAmount = Input.GetAxis("Vertical") * tankSpeed * Time.deltaTime;
+        float steerAmount = Input.GetAxis("Horizontal") * steerSpeed * Time.deltaTime;
+        float moveAmount = Input.GetAxis("Vertical") * speed * Time.deltaTime;
         transform.Rotate(0, 0, -steerAmount);
         transform.Translate(0, moveAmount, 0);
     }
 
-    void SwerveDrive()
+    public void SetSteerSpeed(float increaseAmount)
     {
-        LookAtMouse();
-        float horizontal = Input.GetAxis("Horizontal") * swerveSpeed * Time.deltaTime;
-        float vertical = Input.GetAxis("Vertical") * swerveSpeed * Time.deltaTime;
-        transform.Translate(horizontal, vertical, 0);
+        steerSpeed += increaseAmount;
     }
 
-    void LookAtMouse()
+    public void SetSpeed(float increaseAmount)
     {
-        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        transform.up = mousePosition - new Vector2(transform.position.x, transform.position.y);
+        speed += increaseAmount;
     }
 }

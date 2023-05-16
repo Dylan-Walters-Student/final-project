@@ -14,8 +14,8 @@ public class Scoring : MonoBehaviour
     int allianceScore;
     bool hasPiece;
     int scoreBase = 2;
-    int high = 3;
-    int mid = 2;
+    int high = 4;
+    int mid = 3;
 
     void Start()
     {
@@ -121,13 +121,6 @@ public class Scoring : MonoBehaviour
         }
     }
 
-    private int ScoretoPoints()
-    {
-        int points;
-        points = (int)(allianceScore * 0.15);
-        return points;
-    }
-
     public void SetPieceStatus(bool gamePieceStatus)
     {
         if (gamePieceStatus)
@@ -143,5 +136,17 @@ public class Scoring : MonoBehaviour
     public bool GetAlliance()
     {
         return alliance;
+    }
+
+    public int GetScoretoPoints()
+    {
+        int points;
+        points = (int)(allianceScore * 0.15);
+        return points;
+    }
+
+    public void SetBaseScoreing(int increaseAmount)
+    {
+        scoreBase += increaseAmount;
     }
 }

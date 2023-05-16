@@ -1,14 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class MatchRun : MonoBehaviour
 {
-    [SerializeField] float gameTime = 250f;
-    bool gameRunning;
-    float timerValue;
-    float fillFraction;
-    float timeLeft;
+    [SerializeField] Slider timerSlider;
+    [SerializeField] TextMeshProUGUI timerText;
+    [SerializeField] float gameTime;
+    SceneLoader load;
+    bool stopTimer;
+
+    void Start() 
+    {
+        load = new SceneLoader();
+        stopTimer = false;
+        timerSlider.maxValue = gameTime;
+        timerSlider.value = gameTime;
+    }
+
     void Update()
     {
         Timer();
@@ -16,31 +27,28 @@ public class MatchRun : MonoBehaviour
 
     void Timer()
     {
-        timerValue -= Time.deltaTime;
+        float time = gameTime - Time.time;
 
-        if (gameRunning)
+        int minutes = Mathf.FloorToInt(time / 60);
+        int seconds = Mathf.FloorToInt(time - minutes * 60f);
+
+        string textTime = string.Format("{0:0}:{1:00}", minutes, seconds);
+
+        if (time <= 0)
         {
-            if (timerValue > 0)
-            {
-                fillFraction = timerValue / timeLeft;
-            }
-            else
-            {
-                gameRunning = false;
-                // run a pop up screen / return to main menu
-            }
+            stopTimer = false;
+            ReturnToMainMenu();
         }
-        else
+
+        if (stopTimer == false)
         {
-            if (timerValue > 0)
-            {
-                fillFraction = timerValue / gameTime;
-            }
-            else
-            {
-                gameRunning = true;
-                timerValue = gameTime;
-            }
+            timerText.text = textTime;
+            timerSlider.value = time;
         }
+    }
+
+    void ReturnToMainMenu()
+    {
+        load.MainMenu();
     }
 }
