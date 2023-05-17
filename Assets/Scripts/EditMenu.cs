@@ -24,15 +24,9 @@ public class EditMenu : MonoBehaviour
     {
         playerMovement = new PlayerMovement();
         score = new Scoring();
-        points += score.GetScoretoPoints();
-        SetMainMenuPoint();
-        StartNumber();
-    }
-
-    private void SetMainMenuPoint()
-    {
-        points = score.GetScoretoPoints();
+        points = StaticHelper.points;
         pointText.text = $"Points: {points}";
+        StartNumber();
     }
 
     private void StartNumber()

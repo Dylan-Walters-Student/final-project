@@ -89,11 +89,10 @@ public class Scoring : MonoBehaviour
             hasPiece = false;
         }
     }
-    public int GetScoretoPoints()
+    public void GivePlayerPoints()
     {
-        int points;
-        points = (int)(blueScore * 0.15);
-        return points;
+        StaticHelper.points += (int)(blueScore * 0.15);
+        Debug.Log(blueScore);
     }
 
     public void SetBaseScoreing(int increaseAmount)

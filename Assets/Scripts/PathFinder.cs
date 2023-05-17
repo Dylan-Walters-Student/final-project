@@ -29,10 +29,6 @@ public class PathFinder : MonoBehaviour
             {
                 waypointIndex++;
             }
-            else 
-            {
-                //move onto the next path
-            }
         }
     }
 }

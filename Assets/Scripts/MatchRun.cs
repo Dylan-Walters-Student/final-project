@@ -8,49 +8,51 @@ public class MatchRun : MonoBehaviour
 {
     [SerializeField] Slider timerSlider;
     [SerializeField] TextMeshProUGUI timerText;
-    [SerializeField] float gameTime;
     SceneLoader loadScene;
+    Scoring score;
     bool stopTimer;
-
-    void Start() 
+    void Start()
     {
         GameObject gameObject = new GameObject("SceneLoader");
         loadScene = gameObject.AddComponent<SceneLoader>(); //adds a new instance of a MonoBehaviour class
 
-        stopTimer = false;
-        timerSlider.maxValue = gameTime;
-        timerSlider.value = gameTime;
+        GameObject gameObject1 = new GameObject("Scoring");
+        score = gameObject1.AddComponent<Scoring>();
+
+        timerSlider.maxValue = StaticHelper.time;
+        timerSlider.value = StaticHelper.time;
     }
 
     void Update()
     {
-        Timer();
+        if (!stopTimer)
+        {
+            Timer();
+        }
     }
 
     void Timer()
     {
-        float time = gameTime - Time.time;
-
-        int minutes = Mathf.FloorToInt(time / 60);
-        int seconds = Mathf.FloorToInt(time - minutes * 60f);
-
-        string textTime = string.Format("{0:0}:{1:00}", minutes, seconds);
-
-        if (time <= 0)
-        {
-            stopTimer = false;
-            ReturnToMainMenu();
-        }
-
+        float time = StaticHelper.time;
         if (stopTimer == false)
         {
+            string textTime = "00:00";
+            
+            time = time - Time.timeSinceLevelLoad;
+
+            int minutes = Mathf.FloorToInt(time / 60);
+            int seconds = Mathf.FloorToInt(time - minutes * 60f);
+
+            textTime = string.Format("{0:0}:{1:00}", minutes, seconds);
             timerText.text = textTime;
             timerSlider.value = time;
         }
-    }
 
-    void ReturnToMainMenu()
-    {
-        loadScene.MainMenu();
+        if (time <= 0)
+        {
+            stopTimer = true;
+            score.GivePlayerPoints();
+            loadScene.MainMenu();
+        }
     }
 }
