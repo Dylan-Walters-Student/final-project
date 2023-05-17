@@ -8,7 +8,7 @@ public class SceneLoader : MonoBehaviour
     public void StartGame()
     {
         StaticHelper.stopTimer = false;
-        StaticHelper.time = 5;
+        StaticHelper.time = 60;
         Debug.Log("Time reset: " + StaticHelper.time);
         SceneManager.LoadScene(1);
     }
