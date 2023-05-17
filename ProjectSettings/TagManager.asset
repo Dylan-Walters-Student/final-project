@@ -7,17 +7,17 @@ TagManager:
   - Cone
   - Cube
   - Grid
-  - HighZoneRed
-  - LowZoneRed
   - LowZoneBlue
   - MidZoneBlue
-  - MidZoneRed
   - HighZoneBlue
   - BlueChute
-  - RedPlatform
   - BluePlatform
-  - RedChute
   - Freeze
+  - RedPlatform
+  - RedChute
+  - HighZoneRed
+  - LowZoneRed
+  - MidZoneRed
   layers:
   - Default
   - TransparentFX

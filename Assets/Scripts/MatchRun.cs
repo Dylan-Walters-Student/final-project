@@ -9,12 +9,14 @@ public class MatchRun : MonoBehaviour
     [SerializeField] Slider timerSlider;
     [SerializeField] TextMeshProUGUI timerText;
     [SerializeField] float gameTime;
-    SceneLoader load;
+    SceneLoader loadScene;
     bool stopTimer;
 
     void Start() 
     {
-        load = new SceneLoader();
+        GameObject gameObject = new GameObject("SceneLoader");
+        loadScene = gameObject.AddComponent<SceneLoader>(); //adds a new instance of a MonoBehaviour class
+
         stopTimer = false;
         timerSlider.maxValue = gameTime;
         timerSlider.value = gameTime;
@@ -49,6 +51,6 @@ public class MatchRun : MonoBehaviour
 
     void ReturnToMainMenu()
     {
-        load.MainMenu();
+        loadScene.MainMenu();
     }
 }
