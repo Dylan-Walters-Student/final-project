@@ -5,7 +5,7 @@ using TMPro;
 
 public class Scoring : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI blueScoreTect;
+    [SerializeField] TextMeshProUGUI blueScoreText;
     [SerializeField] GameObject bumperBlue;
     Collection collection;
     int blueScore;
@@ -16,7 +16,7 @@ public class Scoring : MonoBehaviour
 
     void Start()
     {
-        blueScoreTect = FindObjectOfType<TextMeshProUGUI>();
+        blueScoreText = FindObjectOfType<TextMeshProUGUI>();
         collection = FindObjectOfType<Collection>();
         blueScore = 0;
         ShowScore();
@@ -29,53 +29,26 @@ public class Scoring : MonoBehaviour
 
     private void Score(Collider2D other)
     {
-        if (other.tag == "HighZoneBlue" || other.tag == "MidZoneBlue" || other.tag == "LowZoneBlue")
-        {
-            ZoneCheck(other);
-        }
-    }
-
-    private void ZoneCheck(Collider2D other)
-    {
         if (other.tag == "HighZoneBlue" && hasPiece)
-        {
-            AddPoints(1);
-        }
-
-        if (other.tag == "MidZoneBlue" && hasPiece)
-        {
-            AddPoints(2);
-        }
-
-        if (other.tag == "LowZoneBlue" && hasPiece)
-        {
-            AddPoints(3);
-        }
-    }
-
-    private void AddPoints(int zone)
-    {
-        if (zone == 1)
         {
             blueScore += scoreBase + high;
         }
 
-        if (zone == 2)
+        if (other.tag == "MidZoneBlue" && hasPiece)
         {
             blueScore += scoreBase + mid;
         }
 
-        if (zone == 3)
+        if (other.tag == "LowZoneBlue" && hasPiece)
         {
             blueScore += scoreBase;
         }
-        collection.AddGamePiece(3);
-        Debug.Log(blueScore);
+        collection.RemoveGamePiece();
     }
 
     private void ShowScore()
     {
-        blueScoreTect.text = $"{blueScore}";
+        blueScoreText.text = $"{blueScore}";
     }
 
     public void SetPieceStatus(bool gamePieceStatus)
@@ -91,8 +64,7 @@ public class Scoring : MonoBehaviour
     }
     public void GivePlayerPoints()
     {
-        StaticHelper.points += (int)(blueScore * 0.15);
-        Debug.Log(blueScore);
+        StaticHelper.points += (int)(blueScore * 0.30);
     }
 
     public void SetBaseScoreing(int increaseAmount)

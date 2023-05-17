@@ -7,7 +7,6 @@ public class PathConfigSO : ScriptableObject
 {
     [SerializeField] Transform pathPrefab;
     [SerializeField] float moveSpeed = 5f;
-    int currentPath = 0;
 
     public Transform GetStartingWaypoint()
     {

@@ -8,10 +8,8 @@ public class Collection : MonoBehaviour
     [SerializeField] Color32 hasCone = new Color32(1, 1, 1, 1);
     [SerializeField] Color32 hasCube = new Color32(1, 1, 1, 1);
     [SerializeField] Color32 noGamePiece = new Color32(1, 1, 1, 1);
-    [SerializeField] GameObject coneCollect;
-    [SerializeField] GameObject cubeCollect;
-    SpriteRenderer spriteRendererCone;
-    SpriteRenderer spriteRendererCube;
+    [SerializeField] SpriteRenderer spriteRendererCone;
+    [SerializeField] SpriteRenderer spriteRendererCube;
     Scoring scoring;
     bool hasPiece;
     bool coneCollected;
@@ -21,13 +19,31 @@ public class Collection : MonoBehaviour
     private void Start()
     {
         scoring = FindObjectOfType<Scoring>();
-        spriteRendererCone = coneCollect.GetComponent<SpriteRenderer>();
-        spriteRendererCube = cubeCollect.GetComponent<SpriteRenderer>();
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
         FieldCollection(other);
         HumanPlayerCollection(other);
+    }
+
+    private void FieldCollection(Collider2D other)
+    {
+        if (other.tag.Equals("Cone") && !hasPiece)
+        {
+                Destroy(other.gameObject);
+                spriteRendererCone.color = hasCone;
+                hasPiece = true;
+                coneCollected = true;
+        }
+
+        if (other.tag.Equals("Cube") && !hasPiece)
+        {
+                Destroy(other.gameObject);
+                spriteRendererCube.color = hasCube;
+                hasPiece = true;
+                cubeCollected = true;
+        }
+        scoring.SetPieceStatus(hasPiece);
     }
 
     private void HumanPlayerCollection(Collider2D other)
@@ -36,66 +52,22 @@ public class Collection : MonoBehaviour
         {
             if (chuteActive && !hasPiece)
             {
-                AddGamePiece(1);
+                FieldCollection(other);
             }
         }
         if (other.tag.Equals("BluePlatform"))
         {
             if (platformActive && !hasPiece)
             {
-                AddGamePiece(1);
+                FieldCollection(other);
             }
         }
     }
 
-    private void FieldCollection(Collider2D other)
+    public void RemoveGamePiece()
     {
-        if (other.tag.Equals("Cone"))
-        {
-            if (!hasPiece)
-            {
-                Destroy(other.gameObject);
-                AddGamePiece(1);
-                coneCollected = true;
-            }
-        }
-
-        if (other.tag.Equals("Cube"))
-        {
-            if (!hasPiece)
-            {
-                Destroy(other.gameObject);
-                AddGamePiece(2);
-                cubeCollected = true;
-            }
-        }
-    }
-
-    public void AddGamePiece(int status)
-    {
-        if (status == 1)
-        {
-            spriteRendererCone.color = hasCone;
-            coneCollected = true;
-            hasPiece = true;
-        }
-        else if (status == 2)
-        {
-            spriteRendererCube.color = hasCube;
-            cubeCollected = true;
-            hasPiece = true;
-        }
-        else
-        {
-            spriteRendererCube.color = noGamePiece;
-            spriteRendererCone.color = noGamePiece;
-            RemoveGamePiece();
-        }
-        scoring.SetPieceStatus(hasPiece);
-    }
-
-    private void RemoveGamePiece()
-    {
+        spriteRendererCube.color = noGamePiece;
+        spriteRendererCone.color = noGamePiece;
         cubeCollected = false;
         coneCollected = false;
         hasPiece = false;
