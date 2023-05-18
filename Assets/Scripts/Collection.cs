@@ -12,13 +12,12 @@ public class Collection : MonoBehaviour
     [SerializeField] SpriteRenderer spriteRendererCube;
     Scoring scoring;
     bool hasPiece;
-    bool coneCollected;
-    bool cubeCollected;
     bool chuteActive = true;
     bool platformActive = true;
     private void Start()
     {
         scoring = FindObjectOfType<Scoring>();
+        RemoveGamePiece();
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -33,7 +32,6 @@ public class Collection : MonoBehaviour
                 Destroy(other.gameObject);
                 spriteRendererCone.color = hasCone;
                 hasPiece = true;
-                coneCollected = true;
         }
 
         if (other.tag.Equals("Cube") && !hasPiece)
@@ -41,7 +39,6 @@ public class Collection : MonoBehaviour
                 Destroy(other.gameObject);
                 spriteRendererCube.color = hasCube;
                 hasPiece = true;
-                cubeCollected = true;
         }
         scoring.SetPieceStatus(hasPiece);
     }
@@ -68,8 +65,6 @@ public class Collection : MonoBehaviour
     {
         spriteRendererCube.color = noGamePiece;
         spriteRendererCone.color = noGamePiece;
-        cubeCollected = false;
-        coneCollected = false;
         hasPiece = false;
         scoring.SetPieceStatus(!hasPiece);
     }
