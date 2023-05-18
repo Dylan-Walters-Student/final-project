@@ -30,6 +30,7 @@ public class Collection : MonoBehaviour
         if (other.tag.Equals("Cone") && !hasPiece)
         {
                 Destroy(other.gameObject);
+                GetComponent<AudioSource>().Play();
                 spriteRendererCone.color = hasCone;
                 hasPiece = true;
         }
@@ -37,6 +38,7 @@ public class Collection : MonoBehaviour
         if (other.tag.Equals("Cube") && !hasPiece)
         {
                 Destroy(other.gameObject);
+                GetComponent<AudioSource>().Play();
                 spriteRendererCube.color = hasCube;
                 hasPiece = true;
         }
