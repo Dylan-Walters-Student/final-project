@@ -9,15 +9,13 @@ public class MatchRun : MonoBehaviour
     [SerializeField] Slider timerSlider;
     [SerializeField] TextMeshProUGUI timerText;
     SceneLoader loadScene;
-    Scoring score;
+    AudioSource FinishMatchSound;
     bool stopTimer;
     void Start()
     {
-        GameObject gameObject = new GameObject("SceneLoader");
-        loadScene = gameObject.AddComponent<SceneLoader>(); //adds a new instance of a MonoBehaviour class
+        loadScene = FindObjectOfType<SceneLoader>();
 
-        GameObject gameObject1 = new GameObject("Scoring");
-        score = gameObject1.AddComponent<Scoring>();
+        FinishMatchSound = GetComponent<AudioSource>();
 
         timerSlider.maxValue = StaticHelper.time;
         timerSlider.value = StaticHelper.time;
@@ -51,7 +49,8 @@ public class MatchRun : MonoBehaviour
         if (time <= 0)
         {
             stopTimer = true;
-            score.GivePlayerPoints();
+            // score.GivePlayerPoints();  place it somewhere else
+            FinishMatchSound.Play();
             loadScene.MainMenu();
         }
     }

@@ -8,4 +8,5 @@ public static class StaticHelper
     public static bool stopTimer = true;
     public static int points;
     public static float time;
+    public static bool hasPiece;
 }

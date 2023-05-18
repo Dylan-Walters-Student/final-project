@@ -11,9 +11,6 @@ public class Collection : MonoBehaviour
     [SerializeField] SpriteRenderer spriteRendererCone;
     [SerializeField] SpriteRenderer spriteRendererCube;
     Scoring scoring;
-    bool hasPiece;
-    bool chuteActive = true;
-    bool platformActive = true;
     private void Start()
     {
         scoring = FindObjectOfType<Scoring>();
@@ -27,36 +24,37 @@ public class Collection : MonoBehaviour
 
     private void FieldCollection(Collider2D other)
     {
-        if (other.tag.Equals("Cone") && !hasPiece)
+        if (other.tag.Equals("Cone") && !StaticHelper.hasPiece)
         {
                 Destroy(other.gameObject);
-                GetComponent<AudioSource>().Play();
                 spriteRendererCone.color = hasCone;
-                hasPiece = true;
+                Debug.Log(hasCone);
+                Debug.Log(spriteRendererCone.color);
+                StaticHelper.hasPiece = true;
         }
 
-        if (other.tag.Equals("Cube") && !hasPiece)
+        if (other.tag.Equals("Cube") && !StaticHelper.hasPiece)
         {
                 Destroy(other.gameObject);
-                GetComponent<AudioSource>().Play();
                 spriteRendererCube.color = hasCube;
-                hasPiece = true;
+                Debug.Log(hasCube);
+                Debug.Log(spriteRendererCube.color);
+                StaticHelper.hasPiece = true;
         }
-        scoring.SetPieceStatus(hasPiece);
     }
 
     private void HumanPlayerCollection(Collider2D other)
     {
         if (other.tag.Equals("BlueChute"))
         {
-            if (chuteActive && !hasPiece)
+            if (!StaticHelper.hasPiece)
             {
                 FieldCollection(other);
             }
         }
         if (other.tag.Equals("BluePlatform"))
         {
-            if (platformActive && !hasPiece)
+            if (!StaticHelper.hasPiece)
             {
                 FieldCollection(other);
             }
@@ -67,7 +65,6 @@ public class Collection : MonoBehaviour
     {
         spriteRendererCube.color = noGamePiece;
         spriteRendererCone.color = noGamePiece;
-        hasPiece = false;
-        scoring.SetPieceStatus(!hasPiece);
+        StaticHelper.hasPiece = false;
     }
 }
