@@ -30,5 +30,9 @@ public class PathFinder : MonoBehaviour
                 waypointIndex++;
             }
         }
+        else
+        {
+            waypointIndex = 0;
+        }
     }
 }

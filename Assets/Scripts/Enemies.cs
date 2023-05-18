@@ -35,4 +35,9 @@ public class Enemies : MonoBehaviour
     {
         rb.MovePosition((Vector2)transform.position + (direction * moveSpeed * Time.deltaTime));
     }
+
+    void Score()
+    {
+        
+    }
 }
