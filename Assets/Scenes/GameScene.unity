@@ -3695,6 +3695,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9217888753398131452, guid: 2213bdd1e5b161f4cbb1a03f86b7cb5a, type: 3}
+      propertyPath: m_Radius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9217888753398131452, guid: 2213bdd1e5b161f4cbb1a03f86b7cb5a, type: 3}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2213bdd1e5b161f4cbb1a03f86b7cb5a, type: 3}
 --- !u!4 &927347297 stripped
@@ -7583,11 +7591,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6786328863088531655, guid: 81f232a47364d7f4a8031a54ddb454a7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.95
+      value: -8.96
       objectReference: {fileID: 0}
     - target: {fileID: 6786328863088531655, guid: 81f232a47364d7f4a8031a54ddb454a7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -9.14
+      value: -9.09
       objectReference: {fileID: 0}
     - target: {fileID: 6786328863088531655, guid: 81f232a47364d7f4a8031a54ddb454a7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7666,9 +7674,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.013022423, y: 0}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.9818382
+  m_Radius: 1
 --- !u!50 &1852561029
 Rigidbody2D:
   serializedVersion: 4

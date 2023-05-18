@@ -1193,9 +1193,6 @@ MonoBehaviour:
   speedText: {fileID: 226894093}
   steerText: {fileID: 511131000}
   basePointText: {fileID: 1266713125}
-  speedCost: 10
-  steerCost: 15
-  basePoint: 20
   points: 0
 --- !u!1 &1121463042
 GameObject:
@@ -1546,7 +1543,7 @@ RectTransform:
   m_GameObject: {fileID: 1249859014}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.49592346, y: 0.5579139, z: 0.49592346}
+  m_LocalScale: {x: 0.46962464, y: 0.5283277, z: 0.46962464}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1569037887}
@@ -1976,7 +1973,7 @@ RectTransform:
   m_GameObject: {fileID: 1569037886}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.93813, y: 0.83389336, z: 0.93813}
+  m_LocalScale: {x: 0.9298369, y: 0.8265217, z: 0.9298369}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1249859015}

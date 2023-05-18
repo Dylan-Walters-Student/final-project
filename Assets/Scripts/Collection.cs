@@ -28,8 +28,6 @@ public class Collection : MonoBehaviour
         {
                 Destroy(other.gameObject);
                 spriteRendererCone.color = hasCone;
-                Debug.Log(hasCone);
-                Debug.Log(spriteRendererCone.color);
                 StaticHelper.hasPiece = true;
         }
 
@@ -37,8 +35,6 @@ public class Collection : MonoBehaviour
         {
                 Destroy(other.gameObject);
                 spriteRendererCube.color = hasCube;
-                Debug.Log(hasCube);
-                Debug.Log(spriteRendererCube.color);
                 StaticHelper.hasPiece = true;
         }
     }

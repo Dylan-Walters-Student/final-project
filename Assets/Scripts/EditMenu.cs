@@ -9,9 +9,6 @@ public class EditMenu : MonoBehaviour
     [SerializeField] TextMeshProUGUI speedText;
     [SerializeField] TextMeshProUGUI steerText;
     [SerializeField] TextMeshProUGUI basePointText;
-    [SerializeField]int speedCost = 10;
-    [SerializeField]int steerCost = 15;
-    [SerializeField]int basePoint = 20;
     PlayerMovement playerMovement;
     Scoring score;
     int speedLevel;
@@ -32,21 +29,21 @@ public class EditMenu : MonoBehaviour
     private void StartNumber()
     {
         pointText.text = $"{points}";
-        speedText.text = $"Speed Cost: {speedCost}";
-        steerText.text = $"Steer Cost: {steerCost}";
-        basePointText.text = $"Point Increase Cost: {basePoint}";
+        speedText.text = $"Speed Cost: {StaticHelper.speedCost}";
+        steerText.text = $"Steer Cost: {StaticHelper.steerCost}";
+        basePointText.text = $"Point Increase Cost: {StaticHelper.basePoint}";
     }
 
     public void UpgradeSpeed()
     {
-        if (points > speedCost && speedLevel < levelmax)
+        if (points > StaticHelper.speedCost && speedLevel < levelmax)
         {
-            points -= speedCost;
+            points -= StaticHelper.speedCost;
             pointText.text = $"Points: {points}";
             playerMovement.SetSpeed(2);
-            speedCost = (int)(speedCost * 1.5);
+            StaticHelper.speedCost = (int)(StaticHelper.speedCost * 1.5);
             speedLevel++;
-            speedText.text = $"Speed Cost: {speedCost}";
+            speedText.text = $"Speed Cost: {StaticHelper.speedCost}";
         }
         else if (speedLevel == levelmax)
         {
@@ -56,36 +53,36 @@ public class EditMenu : MonoBehaviour
 
     public void UpgradeSteer()
     {
-        if (points > steerCost && steerLevel < levelmax)
+        if (points > StaticHelper.steerCost && steerLevel < levelmax)
         {
-            points -= steerCost;
+            points -= StaticHelper.steerCost;
             pointText.text = $"Points: {points}";
             playerMovement.SetSteerSpeed(10);
-            steerCost = (int)(steerCost * 1.5);
+            StaticHelper.steerCost = (int)(StaticHelper.steerCost * 1.5);
             steerLevel++;
-            steerText.text = $"Steer Cost: {steerCost}";
+            steerText.text = $"Steer Cost: {StaticHelper.steerCost}";
         }
         else if (steerLevel == levelmax)
         {
-            speedText.text = $"Steer: MAX LEVEL";
+            steerText.text = $"Steer: MAX LEVEL";
         }
     }
 
 
     public void UpgradeBasePoint()
     {
-        if (points > basePoint && basePointLevel < levelmax)
+        if (points > StaticHelper.basePoint && basePointLevel < levelmax)
         {
-            points -= basePoint;
+            points -= StaticHelper.basePoint;
             pointText.text = $"Points: {points}";
-            score.SetBaseScoreing(2);
-            basePoint = (int)(basePoint * 1.5);
+            StaticHelper.scorebase += 1;
+            StaticHelper.basePoint = (int)(StaticHelper.basePoint * 1.5);
             basePointLevel++;
-            basePointText.text = $"Point Increase Cost: {basePoint}";
+            basePointText.text = $"Score Increase Cost: {StaticHelper.basePoint}";
         }
         else if (steerLevel == levelmax)
         {
-            speedText.text = $"Points: MAX LEVEL";
+            basePointText.text = $"Score Increase: MAX LEVEL";
         }
     }
 }

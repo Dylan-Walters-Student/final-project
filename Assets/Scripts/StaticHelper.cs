@@ -9,4 +9,10 @@ public static class StaticHelper
     public static int points;
     public static float time;
     public static bool hasPiece;
+
+    public static int speedCost = 10;
+    public static int steerCost = 15;
+    public static int basePoint = 20;
+    
+    public static int scorebase = 2;
 }

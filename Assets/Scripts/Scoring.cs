@@ -12,7 +12,6 @@ public class Scoring : MonoBehaviour
     int blueScore;
     int high = 4;
     int mid = 3;
-    int scoreBase = 2;
 
     void Start()
     {
@@ -32,7 +31,7 @@ public class Scoring : MonoBehaviour
     {
         if (other.tag == "HighZoneBlue" && StaticHelper.hasPiece)
         {
-            blueScore += scoreBase + high;
+            blueScore += StaticHelper.scorebase + high;
             ScoreSound.Play();
             collection.RemoveGamePiece();
             StaticHelper.points += 3;
@@ -40,7 +39,7 @@ public class Scoring : MonoBehaviour
 
         if (other.tag == "MidZoneBlue" && StaticHelper.hasPiece)
         {
-            blueScore += scoreBase + mid;
+            blueScore += StaticHelper.scorebase + mid;
             ScoreSound.Play();
             collection.RemoveGamePiece();
             StaticHelper.points += 2;
@@ -48,7 +47,7 @@ public class Scoring : MonoBehaviour
 
         if (other.tag == "LowZoneBlue" && StaticHelper.hasPiece)
         {
-            blueScore += scoreBase;
+            blueScore += StaticHelper.scorebase;
             ScoreSound.Play();
             collection.RemoveGamePiece();
             StaticHelper.points += 1;
@@ -59,10 +58,5 @@ public class Scoring : MonoBehaviour
     private void ShowScore()
     {
         blueScoreText.text = $"{blueScore}";
-    }
-
-    public void SetBaseScoreing(int increaseAmount)
-    {
-        scoreBase += increaseAmount;
     }
 }
