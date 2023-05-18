@@ -15,4 +15,5 @@ public static class StaticHelper
     public static int basePoint = 20;
     
     public static int scorebase = 2;
+    public static int enemyScore = 0;
 }

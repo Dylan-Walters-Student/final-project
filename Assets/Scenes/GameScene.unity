@@ -4558,8 +4558,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5aae304e5dab539489ba03323814fc36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  redScoreText: {fileID: 744971782}
   player: {fileID: 1415883136}
-  moveSpeed: 4
+  moveSpeed: 5
 --- !u!1001 &1141666570
 PrefabInstance:
   m_ObjectHideFlags: 0

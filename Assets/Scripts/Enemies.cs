@@ -1,20 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Enemies : MonoBehaviour
 {
+    [SerializeField] TextMeshProUGUI redScoreText;
     [SerializeField] Transform player;
     [SerializeField] float moveSpeed = 5f;
+    float nextScoreTime = 1;
     Rigidbody2D rb;
     Vector2 movement;
 
     void Start() 
     {
         rb = this.GetComponent<Rigidbody2D>();    
+        redScoreText.text = $"{StaticHelper.enemyScore}";
+        StaticHelper.enemyScore = 0;
     }
     void Update()
     {
+        if (Time.time >= nextScoreTime)
+        {
+            Score();
+            nextScoreTime = Time.time + 1f;
+        }
         ChasePlayer();
     }
 
@@ -38,6 +48,7 @@ public class Enemies : MonoBehaviour
 
     void Score()
     {
-        
+        StaticHelper.enemyScore++;
+        redScoreText.text = $"{StaticHelper.enemyScore}";
     }
 }
