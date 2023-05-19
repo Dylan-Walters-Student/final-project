@@ -31,9 +31,9 @@ public class EditMenu : MonoBehaviour
         points = StaticHelper.points;
         pointText.text = $"Points: {points}";
         StartNumber();
-        speedBattery.sprite = battery0;
-        steerBattery.sprite = battery0;
-        pointBattery.sprite = battery0;
+        BatterySwitch(StaticHelper.speedLevel, 0);
+        BatterySwitch(StaticHelper.steerLevel, 1);
+        BatterySwitch(StaticHelper.basePointLevel, 2);
     }
 
     private void StartNumber()
@@ -56,10 +56,6 @@ public class EditMenu : MonoBehaviour
             speedText.text = $"Speed Cost: {StaticHelper.speedCost}";
             BatterySwitch(StaticHelper.speedLevel, 0);
         }
-        else if (StaticHelper.speedLevel == levelmax)
-        {
-            speedText.text = $"Speed: MAX LEVEL";
-        }
     }
 
     public void UpgradeSteer()
@@ -73,10 +69,6 @@ public class EditMenu : MonoBehaviour
             StaticHelper.steerLevel++;
             steerText.text = $"Steer Cost: {StaticHelper.steerCost}";
             BatterySwitch(StaticHelper.steerLevel, 1);
-        }
-        else if (StaticHelper.steerLevel == levelmax)
-        {
-            steerText.text = $"Steer: MAX LEVEL";
         }
     }
 
@@ -92,10 +84,6 @@ public class EditMenu : MonoBehaviour
             StaticHelper.basePointLevel++;
             basePointText.text = $"Score Increase Cost: {StaticHelper.basePoint}";
             BatterySwitch(StaticHelper.basePointLevel, 2);
-        }
-        else if (StaticHelper.basePointLevel == levelmax)
-        {
-            basePointText.text = $"Score Increase: MAX LEVEL";
         }
     }
 
@@ -203,16 +191,19 @@ public class EditMenu : MonoBehaviour
                 if (batteryTypeStatus == 0)
                 {
                     speedBattery.sprite = battery6;
+                    speedText.text = $"Speed: MAX LEVEL";
                 }
 
                 if (batteryTypeStatus == 1)
                 {
                     steerBattery.sprite = battery6;
+                    steerText.text = $"Steer: MAX LEVEL";
                 }
 
                 if (batteryTypeStatus == 2)
                 {
                     pointBattery.sprite = battery6;
+                    basePointText.text = $"Score Increase: MAX LEVEL";
                 }
                 break;
             default:
