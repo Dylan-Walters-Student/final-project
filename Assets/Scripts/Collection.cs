@@ -19,7 +19,6 @@ public class Collection : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         FieldCollection(other);
-        HumanPlayerCollection(other);
     }
 
     private void FieldCollection(Collider2D other)
@@ -37,23 +36,18 @@ public class Collection : MonoBehaviour
                 spriteRendererCube.color = hasCube;
                 StaticHelper.hasPiece = true;
         }
-    }
 
-    private void HumanPlayerCollection(Collider2D other)
-    {
-        if (other.tag.Equals("BlueChute"))
+        if (other.tag.Equals("BlueChute") && !StaticHelper.hasPiece || other.tag.Equals("BluePlatform") && !StaticHelper.hasPiece)
         {
-            if (!StaticHelper.hasPiece)
+            if (Random.value > 0.5)
             {
-                FieldCollection(other);
+                spriteRendererCone.color = hasCone;
             }
-        }
-        if (other.tag.Equals("BluePlatform"))
-        {
-            if (!StaticHelper.hasPiece)
+            else 
             {
-                FieldCollection(other);
+                spriteRendererCube.color = hasCube;
             }
+            StaticHelper.hasPiece = true;
         }
     }
 
