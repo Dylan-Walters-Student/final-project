@@ -49,9 +49,9 @@ public class MatchRun : MonoBehaviour
         if (time <= 0)
         {
             stopTimer = true;
-            // score.GivePlayerPoints();  place it somewhere else
-            FinishMatchSound.Play();
-            loadScene.MainMenu();
+            StaticHelper.finalEnemyScore = StaticHelper.enemyScore;
+            StaticHelper.finalPlayerScore = StaticHelper.playerScore;
+            loadScene.EndGameMenu();
         }
     }
 }

@@ -9,7 +9,6 @@ public class Scoring : MonoBehaviour
     [SerializeField] GameObject bumperBlue;
     Collection collection;
     AudioSource ScoreSound;
-    int blueScore;
     int high = 4;
     int mid = 3;
 
@@ -18,7 +17,7 @@ public class Scoring : MonoBehaviour
         ScoreSound = GetComponent<AudioSource>();
         blueScoreText = FindObjectOfType<TextMeshProUGUI>();
         collection = FindObjectOfType<Collection>();
-        blueScore = 0;
+        StaticHelper.playerScore = 0;
         ShowScore();
     }
     void OnTriggerEnter2D(Collider2D other)
@@ -31,7 +30,7 @@ public class Scoring : MonoBehaviour
     {
         if (other.tag == "HighZoneBlue" && StaticHelper.hasPiece)
         {
-            blueScore += StaticHelper.scorebase + high;
+            StaticHelper.playerScore += StaticHelper.scorebase + high;
             ScoreSound.Play();
             collection.RemoveGamePiece();
             StaticHelper.points += 3;
@@ -39,7 +38,7 @@ public class Scoring : MonoBehaviour
 
         if (other.tag == "MidZoneBlue" && StaticHelper.hasPiece)
         {
-            blueScore += StaticHelper.scorebase + mid;
+            StaticHelper.playerScore += StaticHelper.scorebase + mid;
             ScoreSound.Play();
             collection.RemoveGamePiece();
             StaticHelper.points += 2;
@@ -47,7 +46,7 @@ public class Scoring : MonoBehaviour
 
         if (other.tag == "LowZoneBlue" && StaticHelper.hasPiece)
         {
-            blueScore += StaticHelper.scorebase;
+            StaticHelper.playerScore += StaticHelper.scorebase;
             ScoreSound.Play();
             collection.RemoveGamePiece();
             StaticHelper.points += 1;
@@ -57,6 +56,6 @@ public class Scoring : MonoBehaviour
 
     private void ShowScore()
     {
-        blueScoreText.text = $"{blueScore}";
+        blueScoreText.text = $"{StaticHelper.playerScore}";
     }
 }

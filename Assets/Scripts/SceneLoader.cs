@@ -13,7 +13,7 @@ public class SceneLoader : MonoBehaviour
     {
         buttonPress.Play();
         StaticHelper.stopTimer = false;
-        StaticHelper.time = 60;
+        StaticHelper.time = 20;
         Invoke("LoadGameScene", 0.5f);
     }
 
@@ -35,6 +35,11 @@ public class SceneLoader : MonoBehaviour
         Invoke("ExplainMenuScene", 0.5f);
     }
 
+    public void EndGameMenu()
+    {
+        Invoke("EndGameMenuScene", 0.5f);
+    }
+
     private void LoadGameScene()
     {
         SceneManager.LoadScene(1);
@@ -53,5 +58,10 @@ public class SceneLoader : MonoBehaviour
     private void ExplainMenuScene()
     {
         SceneManager.LoadScene(3);
+    }
+
+    private void EndGameMenuScene()
+    {
+        SceneManager.LoadScene(4);
     }
 }

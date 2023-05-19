@@ -13,7 +13,11 @@ public static class StaticHelper
     public static int speedCost = 10;
     public static int steerCost = 15;
     public static int basePoint = 20;
-    
     public static int scorebase = 2;
-    public static int enemyScore = 0;
+
+    public static int enemyScore;
+    public static int playerScore;
+
+    public static int finalEnemyScore;
+    public static int finalPlayerScore;
 }

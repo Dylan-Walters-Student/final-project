@@ -17,5 +17,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ExplainScene.unity
     guid: 81c0be907518529458132848cd58014a
+  - enabled: 1
+    path: Assets/Scenes/EndGameScene.unity
+    guid: 29b9538c41dfd364b9c53d31f1d9023d
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 083849e5145987e4093fe67bdad919bb, type: 2}
