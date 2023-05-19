@@ -13,7 +13,7 @@ public class SceneLoader : MonoBehaviour
     {
         buttonPress.Play();
         StaticHelper.stopTimer = false;
-        StaticHelper.time = 20;
+        StaticHelper.time = 60;
         Invoke("LoadGameScene", 0.5f);
     }
 
