@@ -10,6 +10,9 @@ public static class StaticHelper
     public static float time;
     public static bool hasPiece;
 
+    public static int speedLevel = 0;
+    public static int steerLevel = 0;
+    public static int basePointLevel = 0;
     public static int speedCost = 10;
     public static int steerCost = 15;
     public static int basePoint = 20;
