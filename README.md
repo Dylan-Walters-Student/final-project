@@ -1,23 +1,35 @@
-# Unity-Template
-_A template repo for Unity projects._
-
-**Includes:** 
-
-1. Default `.gitignore` for Unity Projects
-2. `.gitattributes` file for _git lfs_ from [alexkaratarakis](https://github.com/alexkaratarakis/gitattributes/blob/master/Unity.gitattributes) 
-3. [MIT License](https://opensource.org/license/mit/)
-
-
-
 ## Getting Started...
 
-1. Use this template to create a new repository
-2. Clone your new repo to your local machine
-3. Open your cloned repo in the **Command Line** or **Git Bash**
-4. Run the command `git lfs install`. After running the command, you should see a message that says _Git LFS initialized_
-
-At this point you can either move your entire Unity project to the cloned repo, or create a new Unity Project in your cloned repo.
-
-
-# IMPORTANT NOTE
-**Your Unity project _must be on the same folder level as the `.gitignore` and `.gitattributes` files_. Failing to do so will cause unintended tracking and will more than likely attempt to commit _all_ of your changes since the `.gitignore` file will not be obeyed.**
+To begin we must look at the **Objective:**
+ -Defeat the opposing red alliance.
+ 
+ It's really that simple! 
+ 
+ The game has simple mechanics with:
+ W - Forwards
+ s - Backwards
+ a - turning left
+ d - turning right
+ 
+ ## Per-match Objective
+ To defeat the red alliance, the objective of each match 
+ is to collect and score more game pieces than the opponent.
+ 
+ - Collect gamepieces (in the form of cones or cubes) 
+   by driving over them with your robot
+   pieces can also be collected at the human player station
+   indicated by the blue rectangles and the blue human 
+   players standing outside the arena.
+ - Score gamepieces by driving over one of the three
+   score zones available. The zones must be the same 
+   alliance as you (blue) indicated by the drivers on 
+   the outer rim of the field.
+   
+ ## Upgrades
+ Upgrading your robot helps in each future match you play.
+ After finishing a match on either the main menu, or win/lose screen
+ you have three options to upgrade:
+ 
+ speed - upgrades how fast your robot moves forward or backwards.
+ Steer - upgrades the turning speed of your robot.
+ base score - upgrades how much score you gain for each gamepiece.
